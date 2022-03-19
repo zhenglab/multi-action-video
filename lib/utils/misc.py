@@ -49,6 +49,13 @@ def params_count(model, ignore_bn=False):
                     count += p.numel()
     return count
 
+def params_count_m3a(model):
+    count = 0
+    for name, layer in model.named_modules():
+        if "m3a" in name:
+            for p in layer.parameters(recurse=False):
+                count += p.numel()
+    return count
 
 def gpu_mem_usage():
     """
@@ -161,6 +168,8 @@ def log_model_info(model, cfg, use_train_input=True):
     """
     logger.info("Model:\n{}".format(model))
     logger.info("Params: {:,}".format(params_count(model)))
+    if cfg.M3A.MODE != "NONE":
+        logger.info("M3A Params: {:,}".format(params_count_m3a(model)))
     logger.info("Mem: {:,} MB".format(gpu_mem_usage()))
 #     logger.info(
 #         "Flops: {:,} G".format(

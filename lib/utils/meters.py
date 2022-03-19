@@ -177,6 +177,18 @@ class TestMeter(object):
                 self.video_preds.cpu().numpy(), self.video_labels.cpu().numpy()
             )
             self.stats["map"] = map
+            num_topks_correct = metrics.topks_correct_multi_label(
+                self.video_preds, self.video_labels, ks
+            )
+            topks = [
+                (x / self.video_preds.size(0)) * 100.0
+                for x in num_topks_correct
+            ]
+            assert len({len(ks), len(topks)}) == 1
+            for k, topk in zip(ks, topks):
+                self.stats["top{}_acc".format(k)] = "{:.{prec}f}".format(
+                    topk, prec=2
+                )
         else:
             num_topks_correct = metrics.topks_correct(
                 self.video_preds, self.video_labels, ks

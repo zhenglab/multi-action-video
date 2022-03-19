@@ -60,3 +60,27 @@ def topk_accuracies(preds, labels, ks):
     """
     num_topks_correct = topks_correct(preds, labels, ks)
     return [(x / preds.size(0)) * 100.0 for x in num_topks_correct]
+
+def topks_correct_multi_label(preds, labels, ks):
+    assert preds.size(0) == labels.size(
+        0
+    ), "Batch dim of predictions and labels must match"
+    # Find the top max_k predictions for each sample
+    _top_max_k_vals, top_max_k_inds = torch.topk(
+        preds, max(ks), dim=1, largest=True, sorted=True
+    )
+    # if labels = 1 save index
+    labels1_ind = []
+    for i in range(len(labels)):
+        labels1_ind.append(labels[i].nonzero(as_tuple=False).view(-1))
+
+    top_max_k_correct = [[0,0] for i in range(len(labels))]
+    for row, row_label_ind in enumerate(labels1_ind):
+        if top_max_k_inds[row][0] in row_label_ind:
+            top_max_k_correct[row][0] = 1.0
+        for j in row_label_ind:
+            if j in top_max_k_inds[row]:
+                top_max_k_correct[row][1] = 1.0
+
+    topks_correct = torch.tensor(top_max_k_correct).sum(0)
+    return topks_correct

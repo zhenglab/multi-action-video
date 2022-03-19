@@ -1,12 +1,12 @@
 # Multi-Modal Multi-Action Video Recognition
 
-We release the code of the "Multi-Modal Multi-Action Video Recognition" framework proposed in our [ICCV2021 paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Shi_Multi-Modal_Multi-Action_Video_Recognition_ICCV_2021_paper.pdf). 
+We release the code of the "Multi-Modal Multi-Action Video Recognition" framework proposed in our [ICCV2021 paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Shi_Multi-Modal_Multi-Action_Video_Recognition_ICCV_2021_paper.pdf) and the extended work. 
 
 <div align="center">
-  <img src="./framework.png" height="360px"/> 
+  <img src="./framework.png" height="320px"/> 
 </div>
 
-The main idea of the framework is to explore multi-action relations via utilizing multi-modal information in videos. We adopt GCN (Graph Convolutional Network) as the relation learner, and also realize a multi-modal joint learning strategy for multi-action video recognition. The core implementation for the framework are [lib/models/m3a_helper.py](lib/models/m3a_helper.py) and [lib/models/m3a_net_builder.py](lib/models/m3a_net_builder.py).
+The main idea of the framework is to explore multi-action relations via utilizing multi-modal information in videos. We adopt GCN (Graph Convolutional Network) and Transformer Network as the relation learners, and also realize a multi-modal joint learning strategy for multi-action video recognition. The core implementation for the framework are [lib/models/m3a_helper.py](lib/models/m3a_helper.py) and [lib/models/m3a_net_builder.py](lib/models/m3a_net_builder.py).
 
 ## Preparation
 Please follow the instructions in [PREPARATION.md](PREPARATION.md) for installation and data preparation.

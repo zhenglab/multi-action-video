@@ -227,18 +227,33 @@ _C.M3A = CfgNode()
 _C.M3A.MODE = "NONE"
 
 # M3A modal types
-# RGB, AUDIO, TEXT, RGB_AUDIO, RGB_TEXT, AUDIO_TEXT, RGB_AUDIO_TEXT
+# RGB, AUDIO, TEXT, AUDIOTEXT
 _C.M3A.MODAL_TYPE = "RGB"
 
 # M3A graph joint types
-# NONE, CAT, SUM
+# NONE, SUM, CROSS
 _C.M3A.MODAL_JOINT_TYPE = "NONE"
+
+# Number of layers
+_C.M3A.NLAYERS = 1
 
 # M3A hidden layer size
 _C.M3A.HIDDEN_LAYER = 1024
 
+# Use simplified tranformer model
+_C.M3A.TRSFMR_SIMPLIFIED = True
+
+# Number of transformer head
+_C.M3A.TRSFMR_NHEAD = 2
+
+# Use POS encoding
+_C.M3A.TRSFMR_POS_ENCODE = False
+
 # M3A audio vec size
 _C.M3A.AUDIO_VEC_SIZE = 384
+
+# M3A audio synonymous size
+_C.M3A.AUDIO_SYNONYM_SIZE = 1
 
 # M3A text vec size
 _C.M3A.TEXT_VEC_SIZE = 300
@@ -482,8 +497,8 @@ def assert_and_infer_cfg(cfg):
 
     # M3A assertions.
     assert cfg.M3A.MODE in ["NONE", "GRAPH", "TRSFMR"]
-    assert cfg.M3A.MODAL_TYPE in ["RGB", "AUDIO", "TEXT", "RGB_AUDIO", "RGB_TEXT", "AUDIO_TEXT", "RGB_AUDIO_TEXT"]
-    assert cfg.M3A.MODAL_JOINT_TYPE in ["NONE", "CAT", "SUM"]
+    assert cfg.M3A.MODAL_JOINT_TYPE in ["NONE", "SUM", "CROSS"]
+    assert cfg.M3A.NLAYERS in [1, 2, 3]
 
     return cfg
 
