@@ -6,7 +6,7 @@ We release the code of the "Multi-Modal Multi-Action Video Recognition" framewor
   <img src="./framework.png" height="320px"/> 
 </div>
 
-The main idea of the framework is to explore multi-action relations via utilizing multi-modal information in videos. We adopt GCN (Graph Convolutional Network) and Transformer Network as the relation learners, and also realize a multi-modal joint learning strategy for multi-action video recognition. The core implementation for the framework are [lib/models/m3a_helper.py](lib/models/m3a_helper.py) and [lib/models/m3a_net_builder.py](lib/models/m3a_net_builder.py).
+The main idea of the framework is to explore multi-action relations via utilizing multi-modal information in videos. We adopt GCN (Graph Convolutional Network) and Transformer Network as the relation learners, and also realize a multi-modal joint learning strategy for multi-action video recognition. The core implementation for the framework are [lib/models/m3a_helper.py](lib/models/m3a_helper.py), [lib/models/m3a_relation_learner.py](lib/models/m3a_relation_learner.py), and [lib/models/m3a_net_builder.py](lib/models/m3a_net_builder.py).
 
 ## Preparation
 Please follow the instructions in [PREPARATION.md](PREPARATION.md) for installation and data preparation.

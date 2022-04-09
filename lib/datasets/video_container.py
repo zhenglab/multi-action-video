@@ -2,7 +2,6 @@
 # https://github.com/facebookresearch/SlowFast
 
 import av
-import pickle
 
 
 def get_video_container(path_to_vid, multi_thread_decode=False, backend="pyav"):
@@ -28,16 +27,3 @@ def get_video_container(path_to_vid, multi_thread_decode=False, backend="pyav"):
         return container
     else:
         raise NotImplementedError("Unknown backend {}".format(backend))
-
-def get_sensor_container(path_to_sensor):
-    """
-    Given the path to the sensor file, return the sensor container.
-    Args:
-        path_to_sensor_file (str): path to the sensor file.
-    Returns:
-        container (container): sensor container.
-    """
-    
-    with open(path_to_sensor, 'rb') as f:
-        container = pickle.load(f)
-    return container

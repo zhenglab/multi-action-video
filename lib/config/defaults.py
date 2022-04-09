@@ -227,8 +227,8 @@ _C.M3A = CfgNode()
 _C.M3A.MODE = "NONE"
 
 # M3A modal types
-# RGB, AUDIO, TEXT, AUDIOTEXT
-_C.M3A.MODAL_TYPE = "RGB"
+# NONE, AUDIO, TEXT, AUDIOTEXT
+_C.M3A.MODAL_TYPE = "NONE"
 
 # M3A graph joint types
 # NONE, SUM, CROSS
@@ -238,13 +238,13 @@ _C.M3A.MODAL_JOINT_TYPE = "NONE"
 _C.M3A.NLAYERS = 1
 
 # M3A hidden layer size
-_C.M3A.HIDDEN_LAYER = 1024
+_C.M3A.HIDDEN_LAYER = 512
 
 # Use simplified tranformer model
 _C.M3A.TRSFMR_SIMPLIFIED = True
 
 # Number of transformer head
-_C.M3A.TRSFMR_NHEAD = 2
+_C.M3A.TRSFMR_NHEAD = 1
 
 # Use POS encoding
 _C.M3A.TRSFMR_POS_ENCODE = False
